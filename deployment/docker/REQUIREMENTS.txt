@@ -16,4 +16,4 @@ mezzanine-slides
 # https://github.com/getsentry/raven-python/issues/337
 raven==5.8.1
 django-sentry==1.13.5
-requests==1.2.3
+requests==2.0.0
