@@ -2,6 +2,8 @@
 """
 core.settings.contrib
 """
+# needed so cartridge gets correct currency
+import locale
 from .base import *  # noqa
 from .secret import (
     COMMENTS_DISQUS_API_PUBLIC_KEY,
@@ -92,6 +94,12 @@ EVENT_SLUG = u"events"
 # CARTRIDGE (ecommerce platform for mezzanine) SETTINGS #
 ######################
 
+# Cartridge uses locale to determine the number of decimal places for the
+# currency. Unfortunately python does not seem to pick up our system
+# locale well so we set it here. If you need to change to another locale
+# please also see Dockerfile in deployment/docker as it sets up the local
+# for en_ZA and you will need to adjust that before your chosen locale works
+locale.setlocale(locale.LC_ALL, 'en_ZA.UTF-8')
 # The following settings are already defined in cartridge.shop.defaults
 # with default values, but are common enough to be put here, commented
 # out, for conveniently overriding. Please consult the settings
