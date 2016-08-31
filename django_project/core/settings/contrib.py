@@ -40,6 +40,7 @@ INSTALLED_APPS += (
      # Extra apps picked out by Tim
      "mezzanine_people",
      "mezzanine_references",
+     "modal_announcements",
      "mdown",  # markdown support in admin
      "mezzanine_agenda",  # we use a local copy as pip misses migrations
      "careers",
@@ -126,7 +127,7 @@ SHOP_CHECKOUT_STEPS_CONFIRMATION = True
 # Controls the formatting of monetary values accord to the locale
 # module in the python standard library. If an empty string is
 # used, will fall back to the system's locale.
-SHOP_CURRENCY_LOCALE = "C.UTF-8"
+SHOP_CURRENCY_LOCALE = "en_ZA.UTF-8"
 
 # Dotted package path and name of the function that
 # is called on submit of the billing/shipping checkout step. This
