@@ -44,6 +44,7 @@ urlpatterns = i18n_patterns(
     url("^account/orders/$", "cartridge.shop.views.order_history",
         name="shop_order_history"),
 
+
     # For mezzanine-agenda
     ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
 
@@ -113,6 +114,8 @@ urlpatterns = i18n_patterns(
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
 
+    # For mezzanine-agenda
+    ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
