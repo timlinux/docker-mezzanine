@@ -39,6 +39,11 @@ urlpatterns = i18n_patterns(
 
     # Mezzanine Careers
     ("^careers/", include("careers.urls")),
+    # For cartridge, the mezzanine ecommerce platform.
+    ("^shop/", include("cartridge.shop.urls")),
+    url("^account/orders/$", "cartridge.shop.views.order_history",
+        name="shop_order_history"),
+
 
     # For mezzanine-agenda
     ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
@@ -68,7 +73,7 @@ urlpatterns = i18n_patterns(
     # "/.html" - so for this case, the template "pages/index.html"
     # should be used if you want to customize the homepage's template.
 
-    # url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+    url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
 
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------
@@ -111,11 +116,6 @@ urlpatterns = i18n_patterns(
 
     # For mezzanine-agenda
     ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
-
-    # For cartridge, the mezzanine ecommerce platform.
-    ("^shop/", include("cartridge.shop.urls")),
-    url("^account/orders/$", "cartridge.shop.views.order_history",
-        name="shop_order_history"),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
