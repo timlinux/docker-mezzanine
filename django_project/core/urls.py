@@ -26,21 +26,26 @@ admin.autodiscover()
 # You can also change the ``home`` view to add your own functionality
 # to the project's homepage.
 
-urlpatterns = i18n_patterns("",
+urlpatterns = i18n_patterns(
+    '',
+
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
     ("^admin/", include(admin.site.urls)),
+
     # For mezzanine-people
     ("^people/", include('mezzanine_people.urls')),
     ("^api/people/", "core.views.get_all_people"),
+
+    # Mezzanine Careers
     ("^careers/", include("careers.urls")),
     # For cartridge, the mezzanine ecommerce platform.
     ("^shop/", include("cartridge.shop.urls")),
     url("^account/orders/$", "cartridge.shop.views.order_history",
         name="shop_order_history"),
-)
 
-urlpatterns += patterns('',
+    # For mezzanine-agenda
+    ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
 
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
@@ -67,7 +72,7 @@ urlpatterns += patterns('',
     # "/.html" - so for this case, the template "pages/index.html"
     # should be used if you want to customize the homepage's template.
 
-    # url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+    url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
 
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------
@@ -108,8 +113,6 @@ urlpatterns += patterns('',
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
 
-    # For mezzanine-agenda
-    ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

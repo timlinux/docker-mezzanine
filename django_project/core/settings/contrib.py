@@ -18,13 +18,13 @@ GRAPPELLI_INSTALLED = True
 
 # Extra installed apps - grapelli needs to be added before others
 INSTALLED_APPS += (
+    'raven.contrib.django.raven_compat',  # enable Raven plugin
      PACKAGE_NAME_GRAPPELLI,
      "config",
      "kartoza_theme",
      "mezzanine",
      "django_comments",
      "compressor",
-     "mezzanine_slides",
      PACKAGE_NAME_FILEBROWSER,
      "mezzanine.boot",
      "mezzanine.conf",
@@ -40,6 +40,7 @@ INSTALLED_APPS += (
      # Extra apps picked out by Tim
      "mezzanine_people",
      "mezzanine_references",
+     "mezzanine_slides",
      "modal_announcements",
      "mdown",  # markdown support in admin
      "mezzanine_agenda",  # we use a local copy as pip misses migrations
