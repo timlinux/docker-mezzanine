@@ -34,6 +34,10 @@ urlpatterns = i18n_patterns("",
     ("^people/", include('mezzanine_people.urls')),
     ("^api/people/", "core.views.get_all_people"),
     ("^careers/", include("careers.urls")),
+    # For cartridge, the mezzanine ecommerce platform.
+    ("^shop/", include("cartridge.shop.urls")),
+    url("^account/orders/$", "cartridge.shop.views.order_history",
+        name="shop_order_history"),
 )
 
 urlpatterns += patterns('',
@@ -106,11 +110,6 @@ urlpatterns += patterns('',
 
     # For mezzanine-agenda
     ("^%s/" % settings.EVENT_SLUG, include("mezzanine_agenda.urls")),
-
-    # For cartridge, the mezzanine ecommerce platform.
-    ("^shop/", include("cartridge.shop.urls")),
-    url("^account/orders/$", "cartridge.shop.views.order_history",
-        name="shop_order_history"),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
